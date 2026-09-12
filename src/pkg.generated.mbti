@@ -1,0 +1,230 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "XiaoMao-MYY/moonstrong/src"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub const LB_PER_KG : Double = 2.20462262185
+
+pub fn activity_factor(ActivityLevel) -> Double
+
+pub fn all_activity_levels() -> Array[ActivityLevel]
+
+pub fn all_bmr_formulas() -> Array[BmrFormula]
+
+pub fn all_dup_days() -> Array[DupDay]
+
+pub fn all_goals() -> Array[Goal]
+
+pub fn all_lifts() -> Array[Lift]
+
+pub fn all_onerm_formulas() -> Array[OneRmFormula]
+
+pub fn all_sexes() -> Array[Sex]
+
+pub fn all_training_statuses() -> Array[TrainingStatus]
+
+pub fn all_weight_units() -> Array[WeightUnit]
+
+pub fn autoregulate_load(Double, Int, Int) -> Double raise InvalidInput
+
+pub fn average_intensity(Array[SetRecord], Double) -> Double raise InvalidInput
+
+pub fn bmi(Double, Double) -> Double raise InvalidInput
+
+pub fn bmr(BmrFormula, Sex, Double, Double, Int, Double) -> Double raise InvalidInput
+
+pub fn body_fat_deurenberg(Sex, Double, Double, Int) -> Double raise InvalidInput
+
+pub fn consensus_1rm(Double, Int) -> Double raise InvalidInput
+
+pub fn custom_lift(String) -> Lift
+
+pub fn detect_plateau(Array[Double], Int, Double) -> Bool raise InvalidInput
+
+pub fn dup_session(Double, DupDay) -> Array[PrescribedSet] raise InvalidInput
+
+pub fn e1rm_from_set(Double, Int, Int) -> Double raise InvalidInput
+
+pub fn estimate_1rm(OneRmFormula, Double, Int) -> Double raise InvalidInput
+
+pub fn estimate_1rm_all(Double, Int) -> Array[(OneRmFormula, Double)] raise InvalidInput
+
+pub fn estimate_confidence(Int) -> Double
+
+pub fn ffmi(Double, Double, Double, Bool) -> Double raise InvalidInput
+
+pub fn five_three_one_cycle(Double, Int) -> Array[(Int, Array[PrescribedSet])] raise InvalidInput
+
+pub fn five_three_one_sets(Double, Int) -> Array[PrescribedSet] raise InvalidInput
+
+pub fn formula_name(OneRmFormula) -> String
+
+pub fn formula_valid_at(OneRmFormula, Int) -> Bool
+
+pub fn formula_weight(OneRmFormula, Int) -> Double
+
+pub fn from_kg(Double, WeightUnit) -> Double
+
+pub fn inol(Int, Double) -> Double raise InvalidInput
+
+pub fn kg_to_lb(Double) -> Double
+
+pub fn lb_to_kg(Double) -> Double
+
+pub fn lift_name(Lift) -> String
+
+pub fn macro_plan(Goal, Double, Double) -> MacroPlan raise InvalidInput
+
+pub fn make_set(Double, Int, Int) -> SetRecord
+
+pub fn next_training_max(Double, Double, Int, Bool) -> Double raise InvalidInput
+
+pub fn pct_from_rpe(Double) -> Double raise InvalidInput
+
+pub fn percent_of_1rm(Double, Double) -> Double raise InvalidInput
+
+pub fn performance_status(Double, Double) -> TrainingStatus raise InvalidInput
+
+pub fn relative_strength(Double, Double) -> Double raise InvalidInput
+
+pub fn rir_from_rpe(Double) -> Int raise InvalidInput
+
+pub fn round_to_plate(Double, Double) -> Double raise InvalidInput
+
+pub fn rpe_from_pct(Double) -> Double raise InvalidInput
+
+pub fn rpe_from_rir(Int) -> Double raise InvalidInput
+
+pub fn set_volume(Double, Int) -> Double raise InvalidInput
+
+pub fn stimulating_reps(Int, Int) -> Int raise InvalidInput
+
+pub fn stronglifts_5x5(Double, Int, Double) -> Array[PrescribedSet] raise InvalidInput
+
+pub fn suggest_deload(Int, Double, Bool, Int) -> DeloadAdvice raise InvalidInput
+
+pub fn tdee(BmrFormula, Sex, Double, Double, Int, Double, ActivityLevel) -> Double raise InvalidInput
+
+pub fn to_kg(Double, WeightUnit) -> Double
+
+pub fn total_inol(Array[SetRecord], Double) -> Double raise InvalidInput
+
+pub fn total_stimulating_reps(Array[SetRecord]) -> Int raise InvalidInput
+
+pub fn total_volume(Array[SetRecord]) -> Double raise InvalidInput
+
+pub fn training_density(Array[SetRecord]) -> Double raise InvalidInput
+
+pub fn training_max(Double, Double) -> Double raise InvalidInput
+
+pub fn volume_adjustment(TrainingStatus) -> Double
+
+pub fn weight_at_rir(Double, Int, Int) -> Double raise InvalidInput
+
+pub fn weight_at_rpe(Double, Int, Double) -> Double raise InvalidInput
+
+pub fn weight_for_reps(OneRmFormula, Double, Int) -> Double raise InvalidInput
+
+// Errors
+pub(all) suberror InvalidInput {
+  NonPositiveWeight(Double)
+  InvalidReps(Int)
+  InvalidPercentage(Double)
+  InvalidSets(Int)
+  InvalidRpe(Double)
+  InvalidRir(Int)
+  InvalidBodyMetric(String)
+}
+
+// Types and methods
+pub(all) enum ActivityLevel {
+  Sedentary
+  Light
+  Moderate
+  Active
+  VeryActive
+} derive(Eq, @debug.Debug)
+
+pub(all) enum BmrFormula {
+  MifflinStJeor
+  KatchMcArdle
+  HarrisBenedict
+} derive(Eq, @debug.Debug)
+
+pub(all) struct DeloadAdvice {
+  needed : Bool
+  reason : String
+  volume_multiplier : Double
+  intensity_multiplier : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) enum DupDay {
+  Heavy
+  Medium
+  Light
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Goal {
+  Hypertrophy
+  FatLoss
+  Maintenance
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Lift {
+  Squat
+  Bench
+  Deadlift
+  OverheadPress
+  Other(String)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct MacroPlan {
+  calories : Double
+  protein_g : Double
+  fat_g : Double
+  carb_g : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) enum OneRmFormula {
+  Epley
+  Brzycki
+  OConner
+  Lander
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PrescribedSet {
+  weight : Double
+  percent : Double
+  reps : Int
+  amrap : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) struct SetRecord {
+  weight : Double
+  reps : Int
+  rir : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Sex {
+  Male
+  Female
+} derive(Eq, @debug.Debug)
+
+pub(all) enum TrainingStatus {
+  Fresh
+  Normal
+  Fatigued
+  Overreached
+} derive(Eq, @debug.Debug)
+
+pub(all) enum WeightUnit {
+  Kg
+  Lb
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
