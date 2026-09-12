@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  moonbit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit toolchain
+        uses: moonbitlang/setup-moonbit@v1
+        with:
+          version: 0.1.20260904
+
+      - name: Show toolchain version
+        run: moon version
+
+      - name: Type check (deny warnings)
+        run: moon check --deny-warn
+
+      - name: Build
+        run: moon build
+
+      - name: Test (deny warnings)
+        run: moon test --deny-warn
+
+      - name: Format check
+        run: moon fmt --check
+
+      - name: Regenerate interface files
+        run: moon info
+
+      - name: Ensure interface files are up to date
+        run: |
+          if [ -n "$(git status --porcelain '*.mbti')" ]; then
+            echo "::error::pkg.generated.mbti is out of date. Run 'moon info' and commit the result."
+            git diff -- '*.mbti'
+            exit 1
+          fi
