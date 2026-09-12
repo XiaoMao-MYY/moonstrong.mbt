@@ -1,0 +1,5 @@
+import {
+  "XiaoMao-MYY/moonstrong/src" @strong,
+}
+
+pkgtype(kind: "executable")
