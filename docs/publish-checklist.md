@@ -68,6 +68,6 @@ moon publish --frozen      # --frozen 确保发布内容与仓库一致
 | A 部分（本地自检） | ✅ 全部通过（详见 `docs/test-record.md`） |
 | B 部分（元数据） | ✅ 模块名与仓库地址已确认为 `XiaoMao-MYY/moonstrong` |
 | C 部分（合规） | ✅ 已完成 |
-| D 部分（仓库） | ⬜ 未开始（需 GitHub 凭据） |
-| E 部分（发布） | ⬜ 未开始（需 mooncakes.io 登录） |
-| F 部分（报名） | ⬜ 未开始 |
+| D 部分（仓库） | ✅ 已完成：public 仓 `https://github.com/XiaoMao-MYY/moonstrong.mbt` 已建，`main` 已推送（15 次提交），CI 首次运行通过（Linux，58/58 测试） |
+| E 部分（发布） | ⬜ 未开始（需 mooncakes.io 登录，由维护者本人执行） |
+| F 部分（报名） | ⬜ 申报书已生成（`docs/项目申报书.md`，含联系方式，未推送公开仓库） |

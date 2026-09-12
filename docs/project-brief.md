@@ -8,6 +8,10 @@
 
 新项目赛道（MoonBit 2026 九月黑客松）
 
+## 仓库
+
+https://github.com/XiaoMao-MYY/moonstrong.mbt （public，默认分支 `main`，CI 已通过）
+
 ## 一句话定位
 
 把"今天练多重、几组几次、该不该加重量、该不该减载"变成一组可调用、可测试、
